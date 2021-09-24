@@ -1,0 +1,169 @@
+<div class="container-fluid">
+    <form action="#" #userForm="ngForm">
+        <!-- <div class="form-group">
+            <label>Enter Username : </label>
+            <input type="text" #names="ngModel" name="userName" ngModel class="form-control" required #name>
+            <small class="text-danger" [class.d-none]="names.valid||names.untouched">Username required</small>
+        </div>
+
+        <div class="form-group">
+            <label>Enter Password : </label>
+            <input type="password" #pass="ngModel" class="form-control" ngModel name="password" required #password
+                minlength="8" maxlength="20"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$">
+            <small class="text-danger" [class.d-none]="pass.valid||pass.untouched">Password is mandatory and cannot be left bank</small>
+            <div *ngIf="pass.errors && (pass.invalid || pass.touched)" [class.d-none]="pass.valid||pass.untouched">
+                <div class="text-danger" *ngIf="pass.errors.required">Password is mandatory and cannot be left bank.
+                </div>
+                <div class="text-danger" *ngIf="pass.errors.minlength">Password length is less than the specified
+                    minimum length.</div>
+                <div class="text-danger" *ngIf="pass.errors.maxlength">Password length is greater than the specified
+                    length.</div>
+                <div class="text-danger" *ngIf="pass.errors.pattern">Password does not match the specified criteria.
+                </div>
+            </div>
+        </div>
+        <button [disabled]="userForm.form.invalid" class="btn btn-dark" type="submit"> Submit</button>
+ -->
+
+
+
+
+        <div class="form-group">
+            <label>Video URL</label>
+            <input type="text" name="videoURL" id="videoURL" required ngModel class="form-control" #videoURL="ngModel"
+                pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?">
+            <div *ngIf="videoURL.errors && (videoURL.invalid || videoURL.touched)"
+                [class.d-none] ="videoURL.valid||videoURL.untouched">
+                <div class="text-danger" *ngIf="videoURL.errors.required"> Video URL is mandatory and cannot be left
+                    bank.</div>
+                <div class="text-danger" *ngIf="videoURL.errors.pattern"> Invalid URL.</div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Video title</label>
+            <!-- <input type="text" name="videoTitle" id="videoTitle" required maxlength="120"> -->
+            <textarea name="videoTitle" id="videoTitle" #videoTitle='ngModel' cols="30" rows="5" type="text" required
+                maxlength="120" ngModel class="form-control"></textarea>
+            <div *ngIf="videoTitle.errors && (videoTitle.invalid || videoTitle.touched)"
+                [class.d-none]="videoTitle.valid||videoTitle.untouched">
+                <div class="text-danger" *ngIf="videoTitle.errors.required"> Video Title is mandatory and cannot be
+                    left bank.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Video Description</label>
+            <input type="text" name="videoDesc" id="videoDesc" ngModel class="form-control" #videoDesc='ngModel'>
+            <div *ngIf="videoDesc.errors && (videoDesc.invalid || videoDesc.touched)"
+                [class.d-none]="videoDesc.valid||videoDesc.untouched">
+                <div class="text-danger" *ngIf="videoDesc.errors.required"> Password is mandatory and cannot be left
+                    bank.
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Video Duration </label>
+            <input type="time" #videoDuration='ngModel' name="videoDuration" id="videoDuration"
+                pattern="([01]?[0-9]{1}|2[0-3]{1}):[0-5]{1}[0-9]{1}" required ngModel class="form-control">
+            <div *ngIf="videoDuration.errors && (videoDuration.invalid || videoDuration.touched)"
+                [class.d-none]="videoDuration.valid||videoDuration.untouched">
+                <div class="text-danger" *ngIf="videoDuration.errors.required"> Duration is mandatory and cannot be
+                    left bank.
+                </div>
+                <div class="text-danger" *ngIf="videoDuration.errors.pattern"> Invalid time pattern.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Channel Title</label>
+            <input type="text" #channelTitle='ngModel' name="channelTitle" id="channelTitle" ngModel
+                class="form-control" required>
+            <div *ngIf="channelTitle.errors && (channelTitle.invalid || channelTitle.touched)"
+                [class.d-none]="channelTitle.valid||channelTitle.untouched">
+                <div class="text-danger" *ngIf="channelTitle.errors.required"> Title is mandatory and cannot be left
+                    bank.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Audience Type</label>
+            <input type="radio" value="" name="audience">
+            <label for="">Yes,its made for Kids</label>
+            <input type="radio" value="" name="audience">
+            <label for="">Not for kids</label>
+        </div>
+        <div class="form-group">
+            <label>Age Restriction</label>
+
+            <label> <input type="radio" value="" name="ageRestriction"> Yes, Restrict my videos to viewers over
+                18</label>
+            <label> <input type="radio" value="" name="ageRestriction"> No, don't restrict my videos to viewers over
+                18</label>
+        </div>
+        <div class="form-group">
+            <label for="">Recording Date</label>
+            <input type="date" name="date" id="date" ngModel class="form-control" #date='ngModel'>
+        </div>
+        <div class="form-group">
+            <label for="">Video Location</label>
+            <select name="location" id="location" ngModel class="form-control" #location='ngModel'>
+                <option disabled selected value> -- select an option -- </option>
+                <option >Maharashtra</option>
+                <option>Pune</option>
+                <option >Delhi</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">License</label>
+            <select name="license" id="license" ngModel class="form-control" #license='ngModel'>
+                <option disabled selected value> -- select an option -- </option>
+                <option >Standard Viewtube License</option>
+                <option >Creative Common License</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">Distribution</label>
+            <select name="distribution" id="distribution" ngModel class="form-control" #distribution='ngModel'>
+                <option disabled selected value> -- select an option -- </option>
+                <option >Everywhere</option>
+                <option>Make this video available only on monetized platforms</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">Video Category</label>
+            <select name="category" id="category" ngModel class="form-control" #category='ngModel'>
+                <option disabled selected value> -- select an option -- </option>
+                <option >Film & Animation</option>
+                <option >Autos & Vehicles</option>
+                <option >Music</option>
+                <option >Pets & Animals</option>
+                <option >Sports</option>
+                <option >Travel & Events</option>
+                <option >Gaming</option>
+                <option>People & Blogs</option>
+                <option >Comedy</option>
+                <option >Entertainment</option>
+                <option >News & Politics</option>
+                <option >Howto & Style</option>
+                <option >Education</option>
+                <option >Science & Technology</option>
+                <option >Nonprofits & Activism</option>
+            </select>
+
+        </div>
+        <div class="form-group">
+            <label for="">Visibility</label>
+            <select name="visibility" id="visibility" required ngModel class="form-control" #visibility='ngModel'>
+                <option disabled selected value> -- select an option -- </option>
+                <option >private</option>
+                <option >Public</option>
+            </select>
+
+        </div>
+
+        <button [disabled]="userForm.form.invalid" class="btn btn-danger" type="submit">Save</button>
+    </form>
+</div>

@@ -1,0 +1,38 @@
+
+<div class="container">
+  <!-- <form [formGroup]="liveStreamForm"> -->
+    <form [formGroup]="liveForm" (ngSubmit)="postData()">
+    <h2>Live Stream Editor</h2>
+    <div>
+      <input type="text" formControlName="title" placeholder="Add Title" class="form-control">
+      <span *ngIf="liveForm.controls['title'].hasError('required') && liveForm.controls['title']?.touched" class="text text-danger">Title Required</span>
+      <span *ngIf="liveForm.controls['title'].hasError  && !liveForm.controls['title'].valid && !liveForm.controls['title'].hasError('required')" class="text text-danger">Maximum Length is 100</span>
+      <!-- <span *ngIf="liveForm.get('title').hasError('required') && liveForm.get('email').touched" class="text text-danger">Title Required</span> -->
+    </div>
+    <div >
+      <input type="date" formControlName="startDate" >
+      <div *ngIf="liveForm.controls['startDate'].hasError('required') && liveForm.controls['startDate']?.touched" class="text text-danger">Start Date Required</div>
+      <input type="time" formControlName="startTime" placeholder="From Time" class="dropdown">
+      <span *ngIf="liveForm.controls['startTime'].hasError('required') && liveForm.controls['startTime']?.touched" class="text text-danger">Start Time Required</span>
+      <input type="time" formControlName="endTime" placeholder="To Time">
+      <span *ngIf="liveForm.controls['endTime'].hasError('required') && liveForm.controls['endTime']?.touched" class="text text-danger">End Time Required</span>
+      <input type="date"formControlName="endDate">
+      <span *ngIf="liveForm.controls['endDate'].hasError('required') && liveForm.controls['endDate']?.touched" class="text text-danger">End Date Required</span>
+
+    </div>
+    <div>
+      <h2>Event Details</h2>
+      <!-- <input type="text" placeholder="Add Event Details" > -->
+      <textarea name="" id="" cols="30" rows="10" placeholder="Add Event Details" ></textarea>
+      <textarea name="" id="" cols="30" rows="5" placeholder="Guests" formControlName="guests"></textarea>
+      <!-- <input type="text" placeholder="Guests" > -->
+    </div>
+    <button type="submit" [disabled]="liveForm.invalid" class="btn btn-danger">Save</button>
+    {{liveForm.status}}
+  </form>
+</div>
+
+
+
+
+
